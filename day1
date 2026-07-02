@@ -156,8 +156,31 @@ public class DataType : MonoBehaviour
         int charSize = sizeof(char);
         Debug.Log(charSize);
 
+        // 문자열 형
+        // 안녕하세요, hello, abcde 문자들이 모인 형태를 나타내고 싶음
 
+        // 문자 한개는 영어 기준 크게 경우의 수가 많이 없음
+        // 100~200개의 경우의 수에서 해결이 됨
+        // "abcd", "dacb" 와 같이 문자열은 경우의 수가 너무 많기 때문에
+        // 문자처럼 숫자와 문자를 1대 1 대응 시키는 것은 사실상 불가능함
+        // 문자 한개가 2바이트 고정이니까 문자열을 읽을 때,
+        // 첫번째 문자의 위치만 기억을 하고, 2바이트씩 띄워서 읽자
+        // 문자열을 저장할 때는 문자열에 " " 를 붙여서 저장함
+        // 문자열은 string 이라고 표기함
 
-    }
+        string str = "안녕하세요";
+        Debug.Log(str);
+        // string의 크기는 char의 크기 * 문자의 갯수
 
+        // 참 거짓 형
+        // 참인지 거짓인지 판명하고 싶음
+        // boolean 대수를 바탕으로 만들어짐
+        // 앞글자만 떼서 bool 형 이라고 함
+        bool b1 = true;
+        bool b2 = false;
+        int boolSize = sizeof(bool);
+        Debug.Log(b1); // 줄복사 단축키 ctrl + D
+        Debug.Log(b2);
+        Debug.Log(boolSize);
+      }
 }
