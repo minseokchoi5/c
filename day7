@@ -1,0 +1,158 @@
+using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
+
+
+// 1. 변수 네이밍 규칙
+//  - 변수에는 띄어쓰기가 안됨
+//  - Camel Case, Snake Case, Pascal Case
+//  - Camel Case는 띄어쓰기가 필요한 경우 다음 글자를 대문자로 만들어 표기
+//  - Snake Case는 띄어쓰기 대신에 _를 넣음
+//  - Pascal Case는 Camel Case와 같지만 맨 앞글자도 대문자로 표기
+
+// C# Coding Convention (코딩 관례)
+// Camel Case - 멤버 변수, 지역 변수
+// Pascal Case - 클래스명, 함수명
+
+public class StarPyramid : MonoBehaviour
+{
+    // 함수는 함수안에 두지말고 따로 두는게 좋다
+    private void Start()
+    {
+        // 과제 1
+        // 성적 처리기
+        // 내가 받은 성적이 있고, 거기에 따라서
+        // A,B,C,D,F 라는 성적을 메길 것임
+        // 성적은 0~100점 까지만 존재함
+        // 100(포함) ~ 95점 (미포함) 까지 A
+        // 90       ~ 95점         까지 B
+        // 85       ~90점          까지 C
+        // 80       ~85점          까지 D
+        // 그외 점수는 F
+
+        // 마지막 성적이 3의 배수인지 아닌지 출력 해보시오.
+
+        // 출력 예시 :
+        // 98점을 받은 학생의 점수는 A 입니다.
+        // 98은 3의 배수가 아닙니다.
+
+
+
+        // 풀이
+        // 1. 내가 받은 성적이 있음
+        // - 성적이라는 변수 하나 만들기
+
+        
+
+
+        // 2. 성적은 0~100점까지 존재함
+        // - 만약에, -1과 같은 음수나, 100점보다 큰 양수가 들어오면
+        // 성적처리기가 동작하면 안될듯
+
+        // 3. A,B,C,D,F 라는 등급을 메겨야 함
+        // - 등급에 대한 변수도 만들면 좋겠다
+        // - // 100(포함) ~ 95점 (미포함) 까지 A
+        // - 90       ~ 95점         까지 B
+        // - 85       ~90점          까지 C
+        // - 80       ~85점          까지 D
+        // - 그외 점수는 F
+
+       
+        int score = 96;
+        // 원칙 : 관리포인트를 줄이는 방향으로 함수 설계
+        StartScoreCalculate(score);
+    }
+
+    // 요구사항을 수행하는 기능
+    // 입력 - 점수만 받으면 됨
+    // ScoreCalculator()
+    // 출력 - X
+
+    void StartScoreCalculate(int score)
+    {
+        char level = GetGrade(score);
+        PrintStudentInfo(score, level);
+
+        bool isMultipleOfThree = IsMultipleOfThree(score);
+        PrintIsMultipleOfThree(isMultipleOfThree, score);
+    }
+
+    // 1. 받은 성적을 바탕으로 등급을 메기는 기능
+    // 입력 -> int형의 받은 성적을 넣어주면 되겠네
+    // 출력 -> char 형의 등급을 출력으로 내주면 되겠네
+
+    char GetGrade(int score)
+    {
+        char result = ' ';
+        if (score <= 100 && score >= 0)
+        {
+            
+            if (score > 95)
+            {
+                result = 'A';
+            }
+            else if (score > 90)
+            {
+                result = 'B';
+            }
+            else if (score > 85)
+            {
+                result = 'C';
+            }
+            else if (score > 80)
+            {
+                result = 'D';
+            }
+            else
+            {
+                result = 'F';
+            }
+        } 
+            return result;
+    }
+
+    // 2. 받은 점수를 바탕으로 3의 배수인지 아닌지를 판별하는 기능
+    // 출력 -> 인지 아닌지(true인지 false인지를 출력할 수 있도록 bool형)
+    // 입력 -> int 형의 점수를 입력으로 하면 됨
+    bool IsMultipleOfThree(int score)
+    {
+        bool result = false;
+        if (score % 3 == 0)
+        {
+            result = true;
+        }
+        else
+        {
+            result = false;
+        }
+        return result;
+    }
+
+    // 학생의 점수와, 등급을 출력해주는 함수를 만들것임
+    // 출력 - 없어도 됨 (Debug.Log를 수행하고 다른 결과를 받을 필요가 없음)
+    // 입력 - int 형 점수, char 형 등급
+    void PrintStudentInfo(int score, char grade)
+    {
+        Debug.Log(score + "를 받은 학생의 등급은 : " + grade);
+    }   
+    
+    // 3의 배수 인지 아닌지에 대한 정보를 받아서 로그를 출력해주는 함수
+    // 입력 - bool 형 하나(IsMultipleOfThree의 결과)
+    //        int 형 하나(score를 받을 녀석)
+    // 출력 - 없음
+
+    void PrintIsMultipleOfThree(bool isMultipleOfThree, int score)
+    {
+        if (isMultipleOfThree)
+        {
+            Debug.Log(score + "는 3의 배수 입니다.");
+        }
+        else
+        {
+            Debug.Log(score + "는 3의 배수가 아닙니다");
+        }
+    }
+    private void Start1()
+    {
+
+    }
+}
